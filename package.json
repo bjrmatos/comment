@@ -1,0 +1,25 @@
+{
+  "name": "Comment",
+  "description": "A comment system for your website",
+  "author": "Thomas Potaire - twitter.com/teapot",
+  "keywords": [
+    "comment",
+    "discussion",
+    "anonymous"
+  ],
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": "http-teapot/comment",
+  "private": true,
+  "dependencies": {
+    "connect": "3.x",
+    "routes": "1.x",
+    "body-parser": "1.x",
+    "compression": "1.x",
+    "swig": "1.4.x",
+    "react": "0.11.x",
+    "socket.io": "1.x",
+    "socket.io-events": "0.4.x",
+    "serve-static": "1.4.x"
+  }
+}
