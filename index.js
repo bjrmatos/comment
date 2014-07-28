@@ -5,7 +5,7 @@ var app = require('connect')()
   , http = require('./lib/http')(server, app, router);
 
 var to = function (controller, action) {
-  return require('./controller/' + controller)[action];
+  return require('./app/controller/' + controller)[action];
 };
 
 // List of routes

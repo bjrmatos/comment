@@ -7,7 +7,6 @@ var Test = {
    */
   hello: function (socket, args) {
     // Says hello back
-    console.log(args);
     socket.emit('test/hello', {'name': args.name});
   }
 }

@@ -1,7 +1,7 @@
 /**
  * Security controller
  */
-var passport = require('../lib/passport');
+var passport = require('../../lib/passport');
 
 var Security = {
   /**
