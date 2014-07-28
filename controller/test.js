@@ -1,13 +1,13 @@
 /**
  * Test controller
  */
-var Test = new (require('./base.js'))();
-
-/**
- * Render a basic HTML page
- */
-Test.hello = function (req, res, route) {
-  res.end(Test.render('test.html.swig', {}));
-};
+var Test = {
+  /**
+   * Render a basic HTML page
+   */
+  hello: function (req, res, route) {
+    res.end(res.render('test.html.swig', {}));
+  }
+}
 
 module.exports = Test;

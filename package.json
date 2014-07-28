@@ -20,6 +20,10 @@
     "react": "0.11.x",
     "socket.io": "1.x",
     "socket.io-events": "0.4.x",
-    "serve-static": "1.4.x"
+    "passport": "0.2.x",
+    "passport-twitter": "1.0.x",
+    "express-session": "1.7.x",
+    "connect-redis": "2.0.x",
+    "redis": "0.11.x"
   }
 }

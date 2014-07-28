@@ -1,20 +1,35 @@
 /**
  * Security controller
  */
-var Security = new (require('./base.js'))();
+var passport = require('../lib/passport');
 
-/**
- * Render a login page
- */
-Security.login = function (req, res, route) {
-  res.end(Security.render('security/login.html.swig', {}));
-};
+var Security = {
+  /**
+   * We only accept Twitter login for now
+   */
+  login: function (req, res, route) {
+    var next = function (err, data) {
+      console.log(err);
+    };
+    passport.authenticate('twitter')(req, res, next);
+  },
 
-/**
- * Render a signup page
- */
-Security.signup = function (req, res, route) {
-  res.end(Security.render('security/signup.html.swig', {}));
-};
+  /**
+   * Twitter redirects back to our system
+   */
+  authorize: function (req, res, route) {
+    res.redirect = function(url){
+      res.writeHead(302, {'location': url});
+      res.end();
+    }
+
+    var next = function (err, data) {
+      console.log(err);
+      // res.redirect('/login/');
+    };
+
+    passport.authenticate('twitter', {failureRedirect: '/login/', successRedirect: '/test/'})(req, res, next);
+  }
+}
 
 module.exports = Security;
