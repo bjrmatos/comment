@@ -9,6 +9,7 @@ var to = function (controller, action) {
 };
 
 // List of routes
+router.addRoute('/', to('static', 'index'));
 router.addRoute('/login/', to('security', 'login'));
-router.addRoute('/authorize', to('security', 'authorize'));
+router.addRoute('/authorize/', to('security', 'authorize'));
 router.addRoute('/test/', to('test', 'hello'));
