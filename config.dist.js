@@ -9,6 +9,7 @@ module.exports = {
     'port': 6379
   },
   'session': {
+    'name': 'connect.sid',
     'cookie': {
       'domain': 'domain.tld'
       'path': '/',
@@ -16,11 +17,7 @@ module.exports = {
       'secure': false,
       'maxAge': null
     },
-    'secret': 'A not-so-secret key',
-    'server': {
-      'host': '127.0.0.1',
-      'port': 6379
-    }
+    'secret': 'A not-so-secret key'
   },
   'oauth': {
     'twitter': {
