@@ -1,5 +1,6 @@
 {% extends '../html.html.swig' %}
 
 {% block Container %}
-  Some content
+  <div id="CommentForm"></div>
+  <div id="CommentListContainer"></div>
 {% endblock %}

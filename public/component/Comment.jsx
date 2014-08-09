@@ -4,20 +4,49 @@
 var Comment = React.createClass({
   getInitialState: function () {
     return {
-      editable: false
+      editable: this.props.editable,
+      liked: this.props.liked,
     }
   },
-  render: function() {
-    var button
-      , attr;
-    if (this.state.editable) {
-      button = <button class="Comment-submit">Submit</button>;
+  submit: function (event) {
+    var body = this.refs.body.getDOMNode().innerHTML.trim();
+
+    this.props.submitCallback(body);
+  },
+  like: function (event) {
+    event.preventDefault();
+
+    if (this.getDOMNode().className.indexOf('is-liked') != -1) {
+      this.getDOMNode().className = this.getDOMNode().className.replace(' is-liked', '');
+    } else {
+      this.getDOMNode().className += ' is-liked';
     }
+
+    this.props.likeCallback(this.props.key);
+  },
+  render: function() {
+    var footer
+      , classString = "Comment";
+
+    if (this.state.editable === "true") {
+      footer = <div className="Comment-footer"><button className="Comment-submit" onClick={this.submit} type="button">Post</button></div>;
+      classString += " is-editable";
+    } else {
+      footer = <div className="Comment-footer"><a className="Comment-footer-flag" href="#">Flag</a> ● <div className="Comment-footer-date">{moment(this.props.timestamp).calendar()}</div></div>
+    }
+
+    if (this.state.liked) {
+      classString += " is-liked";
+    }
+
     return (
-      <div class="Comment">
-        <img src={this.props.avatar} class="Comment-avatar" />
-        <p class="Comment-body">{this.props.body}</p>
-        {button}
+      <div className={classString} key={this.props.key}>
+        <img src={this.props.avatar} className="Comment-avatar" />
+        <a className="Comment-like" onClick={this.like} href="#"><i className="fa fa-heart"></i></a>
+        <a className="Comment-replies" href="#"><i className="fa fa-comment"></i></a>
+        <div className="Comment-body" ref="body" contentEditable={this.state.editable} dangerouslySetInnerHTML={{__html: marked(this.props.children.toString())}}>
+        </div>
+        {footer}
       </div>
     );
   }

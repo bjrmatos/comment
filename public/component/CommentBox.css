@@ -1,0 +1,7 @@
+.CommentBox .CommentList {
+  margin-left: 50px;
+}
+
+.CommentBox .CommentList .Comment {
+  max-width: 320px;
+}

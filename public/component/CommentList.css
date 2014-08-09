@@ -1,0 +1,13 @@
+.CommentList .CommentList-title {
+  color: #efefef;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 0.85;
+  line-height: 1.25;
+  margin: 6px 0;
+}
+
+.CommentList .Comment {
+  margin-top: 4px;
+}

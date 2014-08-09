@@ -24,11 +24,10 @@ var Security = {
     }
 
     var next = function (err, data) {
-      console.log(err);
-      // res.redirect('/login/');
+      res.redirect('/login/');
     };
 
-    passport.authenticate('twitter', {failureRedirect: '/login/', successRedirect: '/test/'})(req, res, next);
+    passport.authenticate('twitter', {failureRedirect: '/login/', successRedirect: '/'})(req, res, next);
   }
 }
 
