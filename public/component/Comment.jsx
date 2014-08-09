@@ -11,7 +11,7 @@ var Comment = React.createClass({
   submit: function (event) {
     var body = this.refs.body.getDOMNode().innerHTML.trim();
 
-    this.props.submitCallback(body);
+    this.props.submitCallback(this.getDOMNode().getAttribute('data-reply-to'), body);
   },
   like: function (event) {
     event.preventDefault();
@@ -23,6 +23,13 @@ var Comment = React.createClass({
     }
 
     this.props.likeCallback(this.props.key);
+  },
+  listReplies: function (event) {
+    event.preventDefault();
+
+    if (this.props.listRepliesCallback) {
+      this.props.listRepliesCallback(event, event.currentTarget);
+    }
   },
   render: function() {
     var footer
@@ -40,10 +47,14 @@ var Comment = React.createClass({
     }
 
     return (
-      <div className={classString} key={this.props.key}>
+      <div className={classString} key={this.props.key} data-comment-id={this.props.key} data-reply-to={this.props.replyTo}>
         <img src={this.props.avatar} className="Comment-avatar" />
-        <a className="Comment-like" onClick={this.like} href="#"><i className="fa fa-heart"></i></a>
-        <a className="Comment-replies" href="#"><i className="fa fa-comment"></i></a>
+        <a className="Comment-like" onClick={this.like} href="#">
+          <i className="fa fa-heart"></i>
+        </a>
+        <a className="Comment-replies" onClick={this.listReplies} href="#">
+          <i className="fa fa-comment"></i>
+        </a>
         <div className="Comment-body" ref="body" contentEditable={this.state.editable} dangerouslySetInnerHTML={{__html: marked(this.props.children.toString())}}>
         </div>
         {footer}

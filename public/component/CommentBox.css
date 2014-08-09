@@ -1,7 +1,8 @@
 .CommentBox .CommentList {
-  margin-left: 50px;
-}
-
-.CommentBox .CommentList .Comment {
+  display: inline-block;
+  margin-left: 60px;
+  margin-right: 20px;
   max-width: 320px;
+  vertical-align: top;
+  width: 100%;
 }

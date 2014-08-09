@@ -31,7 +31,15 @@ var Comment = {
       return {};
     }
 
-    var user_id = socket.request.user.id;
+    var user_id = socket.request.user.id
+      , key = ''
+      , replyTo = data.replyTo;
+
+    if (replyTo == 0) {
+      key = 'comment_list_' + data.thread_id;
+    } else {
+      key = 'comment_list_replies_' + replyTo;
+    }
 
     store.incr('comment', 'incr', 1, function (err, int) {
       var comment = {
@@ -47,28 +55,51 @@ var Comment = {
       store.set('comment', int, comment);
 
       // Add comment to the list
-      store.list.prepend('comment_list_' + data.thread_id, int, function (err, id) {});
+      store.list.prepend(key, int, function (err, id) {});
 
       // Send confirmation message
       store.get('user', comment.user_id, function (err, user) {
+        var data;
         comment.user = user;
-        socket.emit('comment/post/confirmation', comment);
-        socket.broadcast.emit('comment/post/confirmation', comment);
+
+        data = {
+          comment: comment,
+          replyTo: replyTo
+        };
+
+        socket.emit('comment/post/confirmation', data);
+        socket.broadcast.emit('comment/post/confirmation', data);
       });
     });
   },
   list: function (socket, data) {
-    var user_id = socket.request.user.id;
+    var key = ''
+      , callbackEvent = ''
+      , commentId = 0
+      , user_id = socket.request.user.id;
 
+    if (data.thread_id) {
+      key = 'comment_list_' + data.thread_id;
+      callbackEvent = 'comment/list';
+    } else if (data.commentId) {
+      key = 'comment_list_replies_' + data.commentId;
+      callbackEvent = 'comment/replies';
+      commentId = data.commentId;
+    }
+console.log('List:');
+console.log(key);
     // Get a list of comment IDs
-    store.list.range('comment_list_' + data.thread_id, 0, 20, function (err, data) {
-      if (!data.length) {
-        socket.emit('comment/list', []);
+    store.list.range(key, 0, 20, function (err, commentIds) {
+      if (!commentIds.length) {
+        socket.emit(callbackEvent, {
+          commentId: commentId,
+          comments: []
+        });
         return;
       }
 
       // Get the comment objects
-      store.get('comment', data, function (err, comments) {
+      store.get('comment', commentIds, function (err, comments) {
         var ids = [];
 
         // Create a map of user ids
@@ -99,7 +130,10 @@ var Comment = {
             }
           }
 
-          socket.emit('comment/list', comments);
+          socket.emit(callbackEvent, {
+            commentId: commentId,
+            comments: comments
+          });
         });
       });
     });
