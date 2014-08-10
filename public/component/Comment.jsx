@@ -15,6 +15,7 @@ var Comment = React.createClass({
   },
   like: function (event) {
     event.preventDefault();
+    event.stopPropagation();
 
     if (this.getDOMNode().className.indexOf('is-liked') != -1) {
       this.getDOMNode().className = this.getDOMNode().className.replace(' is-liked', '');
@@ -35,17 +36,29 @@ var Comment = React.createClass({
     this.props.toggleCommentCallback(event, event.currentTarget);
   },
   render: function() {
-    var footer
+    var markupFooter = ''
       , classString = "Comment"
       , replyTo = this.props.replyTo
-      , id = "";
+      , id = ""
+      , markupStatsLikes = ''
+      , markupStatsReplies = '';
 
     if (this.state.editable === "true") {
-      footer = <div className="Comment-footer"><button className="Comment-submit" onClick={this.submit} type="button">Post</button></div>;
+      markupFooter = <div className="Comment-footer"><button className="Comment-submit" onClick={this.submit} type="button">Post</button></div>;
       classString += " is-editable";
     } else {
       id = "Comment-" + this.props.key;
-      footer = <div className="Comment-footer"><a className="Comment-footer-flag" href="#">Flag</a> ● <div className="Comment-footer-date">{moment(this.props.timestamp).calendar()}</div></div>
+      markupFooter = <div className="Comment-footer"><a className="Comment-footer-flag" href="#">Flag</a> ● <div className="Comment-footer-date">{moment(this.props.timestamp).calendar()}</div></div>
+    }
+
+    // If the comment was liked one time or more
+    if (this.props.likes) {
+      markupStatsLikes = <div className="Comment-likeTotal">{this.props.likes}</div>;
+    }
+
+    // If the comment has one or more replies
+    if (this.props.replies) {
+      markupStatsReplies = <div className="Comment-repliesTotal">{this.props.replies}</div>
     }
 
     if (this.state.liked) {
@@ -58,16 +71,20 @@ var Comment = React.createClass({
 
     return (
       <div id={id} className={classString} key={this.props.key} onClick={this.toggleComment} data-comment-id={this.props.key} data-reply-to={replyTo}>
-        <img src={this.props.avatar} className="Comment-avatar" />
+        <a className="Comment-avatar">
+          <img src={this.props.avatar} />
+        </a>
         <a className="Comment-like" onClick={this.like} href="#">
           <i className="fa fa-heart"></i>
         </a>
         <a className="Comment-replies" onClick={this.listReplies} href="#">
           <i className="fa fa-comment"></i>
         </a>
+        {markupStatsLikes}
+        {markupStatsReplies}
         <div className="Comment-body" ref="body" contentEditable={this.state.editable} dangerouslySetInnerHTML={{__html: marked(this.props.children.toString())}}>
         </div>
-        {footer}
+        {markupFooter}
       </div>
     );
   }

@@ -1,14 +1,20 @@
+.CommentBox {
+  white-space: nowrap;
+}
+
 .CommentBox .CommentList {
   display: inline-block;
+  margin-left: 60px;
   margin-right: 20px;
   max-width: 320px;
-  padding-left: 60px;
+  position: relative;
   vertical-align: top;
+  white-space: normal;
   width: 100%;
 }
 
 .CommentBox .CommentList:nth-child(n+2) {
-  /*padding-left: 100px;*/
+  /*margin-left: 0px;*/
 }
 
 .CommentBox .CommentList:nth-child(n+2):before {

@@ -10,10 +10,16 @@
 }
 
 .Comment .Comment-avatar,
+.Comment .Comment-avatar img,
+.Comment .Comment-like,
+.Comment .Comment-replies {
+  border-radius: 48px;
+}
+
+.Comment .Comment-avatar,
 .Comment .Comment-like,
 .Comment .Comment-replies {
   border: 4px solid #f9f9f9;
-  border-radius: 48px;
   color: #fff;
   display: block;
   height: 48px;
@@ -27,13 +33,39 @@
 .Comment .Comment-replies {
   border-width: 3px;
   height: 24px;
-  right: -16px;
+  left: 100%;
+  margin-left: -16px;
   width: 24px;
 }
 
 .Comment.is-editable .Comment-like,
 .Comment.is-editable .Comment-replies {
   display: none;
+}
+
+.Comment .Comment-likeTotal,
+.Comment .Comment-repliesTotal {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  color: #d4d4d4;
+  font-size: 10px;
+  left: 100%;
+  line-height: 20px;
+  margin-left: 20px;
+  margin-top: 6px;
+  padding: 0 6px;
+  position: absolute;
+}
+
+.Comment .Comment-likeTotal:before,
+.Comment .Comment-repliesTotal:before {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 4px solid rgba(0, 0, 0, 0.5);
+  content: ' ';
+  left: -4px;
+  position: absolute;
+  top: 5px;
 }
 
 .Comment .Comment-like .fa,
@@ -45,9 +77,13 @@
   left: -40px;
 }
 
+.Comment .Comment-like,
+.Comment .Comment-likeTotal {
+  top: 0;
+}
+
 .Comment .Comment-like {
   background-color: #F08F8F;
-  top: 0;
 }
 .Comment.is-liked .Comment-like {
   background-color: #DB2424;
@@ -56,9 +92,13 @@
   line-height: 26px;
 }
 
+.Comment .Comment-replies,
+.Comment .Comment-repliesTotal {
+  top: 34px;
+}
+
 .Comment .Comment-replies {
   background-color: #6db964;
-  top: 34px;
 }
 .Comment .Comment-replies .fa {
   line-height: 24px;

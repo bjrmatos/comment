@@ -1,5 +1,5 @@
 .CommentList {
-  margin: 10px 0;
+  padding: 0;
 }
 
 .CommentList.is-selected .Comment {
@@ -8,6 +8,11 @@
 
 .CommentList.is-selected .Comment.is-active {
   opacity: 1;
+}
+
+.CommentList.is-selected .Comment .Comment-likeTotal,
+.CommentList.is-selected .Comment .Comment-repliesTotal {
+  display: none;
 }
 
 .CommentList .CommentList-title {

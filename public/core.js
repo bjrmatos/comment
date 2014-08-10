@@ -49,7 +49,9 @@
     };
 
     var renderList = function (list) {
-      commentBox = React.renderComponent(CommentBox({
+      commentBox = React.renderComponent(
+        CommentBox({
+          key: 'CommentBox',
           user: user,
           getRepliesCallback: getRepliesCallback,
           likeCallback: likeCallback,

@@ -23,6 +23,7 @@ var CommentBox = React.createClass({
     var user = this.props.user
       , trail = []
       , incr = 0
+      , offsetTop = 0
       , commentLists = this.state.commentLists
       , listRepliesCallback = this.listReplies
       , toggleCommentCallback = this.toggleComment
@@ -37,7 +38,13 @@ var CommentBox = React.createClass({
       <div className="CommentBox">
         {commentLists.map(function (list, index) {
           var isSelected = false
-            , activeCommentId = false;
+            , activeCommentId = false
+            , el;
+
+          if (index != 0) {
+            el = document.getElementById('Comment-' + index);
+            offsetTop += el.offsetTop;
+          }
 
           if (commentLists.length - 1 > index) {
             isSelected = true;
@@ -51,11 +58,13 @@ var CommentBox = React.createClass({
 
           return (
             <CommentList
+              key={index}
               replyTo={index}
               isSelected={isSelected}
               activeCommentId={activeCommentId}
               user={user}
               comments={list}
+              offsetTop={offsetTop}
               listRepliesCallback={listRepliesCallback}
               toggleCommentCallback={toggleCommentCallback}
               submitCallback={submitCallback}

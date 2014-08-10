@@ -30,13 +30,16 @@ var CommentList = React.createClass({
     }
 
     if (replyTo != 0) {
-      el = document.getElementById('Comment-' + replyTo);
       style = {
-        marginTop: el.offsetTop + 'px'
+        marginTop: this.props.offsetTop + 'px'
       };
       title = 'Latest replies';
     } else {
       title = 'Latest comments';
+    }
+
+    if (!comments.length) {
+      title = 'No comments, maybe you could post one?';
     }
 
     if (this.props.isSelected) {
@@ -61,6 +64,8 @@ var CommentList = React.createClass({
                   active={isActive}
                   replyTo={replyTo}
                   liked={comment.liked}
+                  likes={comment.likes}
+                  replies={comment.replies}
                   avatar={comment.user.image}
                   timestamp={comment.timestamp}
                   listRepliesCallback={listRepliesCallback}
