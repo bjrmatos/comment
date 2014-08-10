@@ -1,3 +1,15 @@
+.CommentList {
+  margin: 10px 0;
+}
+
+.CommentList.is-selected .Comment {
+  opacity: 0.4;
+}
+
+.CommentList.is-selected .Comment.is-active {
+  opacity: 1;
+}
+
 .CommentList .CommentList-title {
   color: #efefef;
   display: inline-block;
@@ -17,4 +29,8 @@
 .CommentList .Comment {
   margin-top: 4px;
   margin-bottom: 4px;
+}
+
+.CommentList .Comment:first-child {
+  margin-top: 0;
 }

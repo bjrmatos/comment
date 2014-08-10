@@ -1,7 +1,10 @@
+"use strict";
+
 (function () {
-  var socket = io('http://teapot.io');
-  var thread_id = 5;
-  var commentLists = [];
+  var socket = io('http://teapot.io')
+    , thread_id = 6
+    , commentLists = []
+    , commentBox;
 
   socket.emit('comment/list', {thread_id: thread_id});
 
@@ -21,21 +24,28 @@
      * @param  integer  commentReplyId  The replyId of commentId
      */
     var getRepliesCallback = function (commentId, commentReplyId) {
-      var del = false;
+      var reset = false;
+
+      // If the trail is already open then we want to close it
+      if (commentLists[commentId] !== undefined) {
+        reset = true;
+      }
+
       // Delete all list after the list matching commentReplyId
       for (var id in commentLists) {
-        if (del === true) {
-          commentLists.splice(id);
-        }
-
         // If the id matches the commentReplyId then all loops going
         // forward will delete the lists
         if (id === commentReplyId) {
-          del = true;
+          commentLists.length = parseInt(id) + 1;
+          break;
         }
       }
 
-      socket.emit('comment/list', {commentId: commentId});
+      if (reset === false) {
+        socket.emit('comment/list', {commentId: commentId});
+      } else {
+        commentBox.setState({commentLists: commentLists});
+      }
     };
 
     var renderList = function (list) {

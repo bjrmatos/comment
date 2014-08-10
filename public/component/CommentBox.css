@@ -1,8 +1,33 @@
 .CommentBox .CommentList {
   display: inline-block;
-  margin-left: 60px;
   margin-right: 20px;
   max-width: 320px;
+  padding-left: 60px;
   vertical-align: top;
   width: 100%;
+}
+
+.CommentBox .CommentList:nth-child(n+2) {
+  /*padding-left: 100px;*/
+}
+
+.CommentBox .CommentList:nth-child(n+2):before {
+  /*background-color: #6DB964;
+  border: 3px solid #F9F9F9;
+  border-radius: 36px;
+  color: #fff;
+  content: '\f075';
+  font-family: FontAwesome;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  height: 36px;
+  left: 8px;
+  line-height: 36px;
+  position: relative;
+  text-align: center;
+  top: 12px;
+  width: 36px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;*/
 }

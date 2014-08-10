@@ -41,12 +41,25 @@ var Comment = {
       key = 'comment_list_replies_' + replyTo;
     }
 
+    // Increment the number of replies in the parent
+    if (replyTo !== 0) {
+      store.get('comment', replyTo, function (err, comment) {
+        if (!comment) {
+          return;
+        }
+
+        comment.replies++;
+        store.set('comment', comment.id, comment);
+      });
+    }
+
     store.incr('comment', 'incr', 1, function (err, int) {
       var comment = {
         id: int,
         body: data.body,
         like_user_ids: [],
         likes: 0,
+        replies: 0,
         timestamp: new Date().getTime(),
         user_id: user_id,
       };
@@ -86,8 +99,7 @@ var Comment = {
       callbackEvent = 'comment/replies';
       commentId = data.commentId;
     }
-console.log('List:');
-console.log(key);
+
     // Get a list of comment IDs
     store.list.range(key, 0, 20, function (err, commentIds) {
       if (!commentIds.length) {
