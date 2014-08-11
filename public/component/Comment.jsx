@@ -5,7 +5,8 @@ var Comment = React.createClass({
   getInitialState: function () {
     return {
       editable: this.props.editable,
-      liked: this.props.liked
+      liked: this.props.liked,
+      likes: this.props.likes
     }
   },
   submit: function (event) {
@@ -17,12 +18,18 @@ var Comment = React.createClass({
     event.preventDefault();
     event.stopPropagation();
 
-    if (this.getDOMNode().className.indexOf('is-liked') != -1) {
-      this.getDOMNode().className = this.getDOMNode().className.replace(' is-liked', '');
+    var likes = this.state.likes;
+
+    if (this.state.liked) {
+      likes--;
     } else {
-      this.getDOMNode().className += ' is-liked';
+      likes++;
     }
 
+    this.setState({
+      liked: !this.state.liked,
+      likes: likes
+    });
     this.props.likeCallback(this.props.key);
   },
   listReplies: function (event) {
@@ -52,8 +59,8 @@ var Comment = React.createClass({
     }
 
     // If the comment was liked one time or more
-    if (this.props.likes) {
-      markupStatsLikes = <div className="Comment-likeTotal">{this.props.likes}</div>;
+    if (this.state.likes) {
+      markupStatsLikes = <div className="Comment-likeTotal">{this.state.likes}</div>;
     }
 
     // If the comment has one or more replies

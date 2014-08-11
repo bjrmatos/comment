@@ -18,8 +18,15 @@
 
 .Comment .Comment-avatar,
 .Comment .Comment-like,
+.Comment .Comment-replies,
+.Comment .Comment-likeTotal,
+.Comment .Comment-repliesTotal {
+  border: 3px solid #f9f9f9;
+}
+
+.Comment .Comment-avatar,
+.Comment .Comment-like,
 .Comment .Comment-replies {
-  border: 4px solid #f9f9f9;
   color: #fff;
   display: block;
   height: 48px;
@@ -31,7 +38,6 @@
 
 .Comment .Comment-like,
 .Comment .Comment-replies {
-  border-width: 3px;
   height: 24px;
   left: 100%;
   margin-left: -16px;
@@ -45,15 +51,16 @@
 
 .Comment .Comment-likeTotal,
 .Comment .Comment-repliesTotal {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
-  color: #d4d4d4;
-  font-size: 10px;
+  border-radius: 4px;
+  border-width: 2px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: normal;
   left: 100%;
-  line-height: 20px;
+  line-height: 16px;
   margin-left: 20px;
-  margin-top: 6px;
-  padding: 0 6px;
+  margin-top: 5px;
+  padding: 0 5px;
   position: absolute;
 }
 
@@ -61,11 +68,11 @@
 .Comment .Comment-repliesTotal:before {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-right: 4px solid rgba(0, 0, 0, 0.5);
+  border-right: 4px solid #f9f9f9;
   content: ' ';
-  left: -4px;
+  left: -6px;
   position: absolute;
-  top: 5px;
+  top: 3px;
 }
 
 .Comment .Comment-like .fa,
@@ -74,6 +81,7 @@
 }
 
 .Comment .Comment-avatar {
+  border-width: 4px;
   left: -40px;
 }
 
@@ -82,10 +90,12 @@
   top: 0;
 }
 
-.Comment .Comment-like {
+.Comment .Comment-like,
+.Comment .Comment-likeTotal {
   background-color: #F08F8F;
 }
-.Comment.is-liked .Comment-like {
+.Comment.is-liked .Comment-like,
+.Comment.is-liked .Comment-likeTotal {
   background-color: #DB2424;
 }
 .Comment .Comment-like .fa {
@@ -97,7 +107,8 @@
   top: 34px;
 }
 
-.Comment .Comment-replies {
+.Comment .Comment-replies,
+.Comment .Comment-repliesTotal {
   background-color: #6db964;
 }
 .Comment .Comment-replies .fa {

@@ -19,7 +19,7 @@ var Comment = {
         comment.likes++;
       } else {
         comment.like_user_ids.splice(comment.like_user_ids.indexOf(user_id), 1);
-        comment.likes++;
+        comment.likes--;
       }
 
       store.set('comment', comment.id, comment);
