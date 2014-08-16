@@ -14,7 +14,7 @@ module.exports = {
   'session': {
     'name': 'connect.sid',
     'cookie': {
-      'domain': 'domain.tld'
+      'domain': 'domain.tld',
       'path': '/',
       'httpOnly': true,
       'secure': false,
