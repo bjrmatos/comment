@@ -38,6 +38,7 @@
     "mocha": "1.21.x"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "start": "node index.js"
   }
 }

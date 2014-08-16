@@ -2,12 +2,13 @@
  * Config sample file
  */
 module.exports = {
+  'domain': 'domain.tld',
   'port': 80,
   'oauth': {
     'twitter': {
       'consumerKey': '',
       'consumerSecret': '',
-      'callbackURL': '/authorize/?strategy=twitter',
+      'callbackURL': '/authorize/?strategy=twitter'
     }
   },
   'session': {
