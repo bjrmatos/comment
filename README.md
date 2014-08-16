@@ -50,6 +50,10 @@ Once you installed the app, run the following command:
 npm test
 ```
 
+### Contributing
+
+Please feel free to contribute to this repository. This software was originally produced as a proof of concept and can definitely be improved.
+
 ### Under the MIT license
 
 For more information, refer to the [LICENSE file](https://github.com/http-teapot/comment/blob/master/LICENSE) in this repository.
