@@ -7,7 +7,7 @@ module.exports = {
     'twitter': {
       'consumerKey': '',
       'consumerSecret': '',
-      'callbackURL': '/authorize/?strategy=twitterg',
+      'callbackURL': '/authorize/?strategy=twitter',
     }
   },
   'session': {
