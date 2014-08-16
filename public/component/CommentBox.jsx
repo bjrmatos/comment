@@ -39,11 +39,13 @@ var CommentBox = React.createClass({
         {commentLists.map(function (list, index) {
           var isSelected = false
             , activeCommentId = false
+            , marginBottom
             , el;
 
           if (index != 0) {
             el = document.getElementById('Comment-' + index);
             offsetTop += el.offsetTop;
+            // offsetTop += el.offsetTop + el.offsetHeight + 4;
           }
 
           if (commentLists.length - 1 > index) {

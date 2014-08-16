@@ -2,6 +2,15 @@
   padding: 0;
 }
 
+.CommentList .CommentList-title,
+.CommentList .CommentList-login {
+  color: #efefef;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 0.85;
+  line-height: 1.25;
+}
+
 .CommentList.is-selected .Comment {
   opacity: 0.4;
 }
@@ -15,13 +24,25 @@
   display: none;
 }
 
+.CommentList .CommentList-login {
+  border-bottom: 1px solid #555;
+  font-size: 13px;
+  padding: 0 0 6px;
+}
+
+.CommentList .CommentList-login .CommentList-login-link,
+.CommentList .CommentList-login .CommentList-login-link:visited {
+  color: #FF6B6B;
+  text-decoration: none;
+}
+
+.CommentList .CommentList-login .CommentList-login-link:hover {
+  color: #E79E9E;
+  text-decoration: underline;
+}
+
 .CommentList .CommentList-title {
-  color: #efefef;
   display: inline-block;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 0.85;
-  line-height: 1.25;
   margin: 6px 0;
 }
 
@@ -32,10 +53,6 @@
 }
 
 .CommentList .Comment {
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.CommentList .Comment:first-child {
   margin-top: 0;
+  margin-bottom: 4px;
 }

@@ -6,7 +6,7 @@ var store = require('../../lib/store')
 
 var Comment = {
   like: function (socket, data) {
-    if (!socket.request.user) {
+    if (!socket.request.user.logged_in) {
       socket.emit('comment/like/error', {message: 'You are not logged-in.'});
       return {};
     }
@@ -14,6 +14,12 @@ var Comment = {
     var user_id = socket.request.user.id;
 
     store.get('comment', data.comment_id, function (err, comment) {
+      // If the comment doesn't exist
+      if (comment === null) {
+        socket.emit('comment/like/error', {message: 'This comment doesn\'t exist'});
+        return;
+      }
+
       if (comment.like_user_ids.indexOf(user_id) == -1) {
         comment.like_user_ids.push(user_id);
         comment.likes++;
@@ -26,7 +32,7 @@ var Comment = {
     });
   },
   post: function (socket, data) {
-    if (!socket.request.user) {
+    if (!socket.request.user.logged_in) {
       socket.emit('comment/post/error', {message: 'You are not logged-in.'});
       return {};
     }

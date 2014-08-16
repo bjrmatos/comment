@@ -13,8 +13,12 @@
   width: 100%;
 }
 
+.CommentBox .CommentList:first-child .CommentList-login {
+  margin-top: 4px;
+}
+
 .CommentBox .CommentList:nth-child(n+2) {
-  /*margin-left: 0px;*/
+  /*margin-left: -290px;*/
 }
 
 .CommentBox .CommentList:nth-child(n+2):before {

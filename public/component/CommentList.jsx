@@ -14,7 +14,7 @@ var CommentList = React.createClass({
       , likeCallback = this.props.likeCallback
       , listRepliesCallback = this.props.listRepliesCallback
       , toggleCommentCallback = this.props.toggleCommentCallback;
-
+      
     if (this.props.user.logged_in === true) {
       form = (
         <Comment
@@ -26,6 +26,12 @@ var CommentList = React.createClass({
           editable="true">
           Write a comment here
         </Comment>
+      );
+    } else {
+      form = (
+        <div className="CommentList-login">
+          <a className="CommentList-login-link" href="/login/">Login</a> to comment on this thread
+        </div>
       );
     }
 

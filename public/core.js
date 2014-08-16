@@ -1,7 +1,7 @@
 "use strict";
 
-(function () {
-  var socket = io('http://teapot.io')
+(function (socket_path, thread_id) {
+  var socket = io(socket_path)
     , thread_id = 6
     , commentLists = []
     , commentBox;
@@ -79,4 +79,4 @@
   });
 
   window.socket;
-})();
+})(socket_path, thread_id);

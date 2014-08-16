@@ -10,14 +10,16 @@
     <div id="Container">
       {% block Container %}{% endblock %}
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/libraries/react/react.js"></script>
-    <script src="/libraries/react/JSXTransformer.js"></script>
-    <script src="/libraries/marked/marked.js"></script>
-    <script src="/libraries/moment/moment.js"></script>
-    <script src="/component/Comment.jsx" type="text/jsx"></script>
-    <script src="/component/CommentBox.jsx" type="text/jsx"></script>
-    <script src="/component/CommentList.jsx" type="text/jsx"></script>
-    <script src="/core.js" type="text/jsx"></script>
+    {% block Scripts %}
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/libraries/react/react.js"></script>
+      <script src="/libraries/react/JSXTransformer.js"></script>
+      <script src="/libraries/marked/marked.js"></script>
+      <script src="/libraries/moment/moment.js"></script>
+      <script src="/component/Comment.jsx" type="text/jsx"></script>
+      <script src="/component/CommentBox.jsx" type="text/jsx"></script>
+      <script src="/component/CommentList.jsx" type="text/jsx"></script>
+      <script src="/core.js" type="text/jsx"></script>
+    {% endblock %}
   </body>
 </html>

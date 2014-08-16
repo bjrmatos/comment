@@ -3,10 +3,12 @@
  */
 module.exports = {
   'port': 80,
-  'storage': {
-    'type': 'redis',
-    'host': '127.0.0.1',
-    'port': 6379
+  'oauth': {
+    'twitter': {
+      'consumerKey': '',
+      'consumerSecret': '',
+      'callbackURL': '',
+    }
   },
   'session': {
     'name': 'connect.sid',
@@ -19,11 +21,13 @@ module.exports = {
     },
     'secret': 'A not-so-secret key'
   },
-  'oauth': {
-    'twitter': {
-      'consumerKey': '',
-      'consumerSecret': '',
-      'callbackURL': '',
-    }
+  'socket': {
+    'domain': 'domain.tld',
+    'port': 80
+  },
+  'storage': {
+    'type': 'redis',
+    'host': '127.0.0.1',
+    'port': 6379
   }
 }
