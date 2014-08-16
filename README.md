@@ -7,14 +7,14 @@ It only stores a user id and the avatar's path in a **Redis data store** which a
 
 By default, the app does not record your IP address.
 
+![Preview of system](https://cloud.githubusercontent.com/assets/1534519/3942864/f9df9f9c-257a-11e4-9229-e995e10e77f8.png)
+
 ### Requirements
 
-You haven't installed **Node.js** yet, please refer to [the official documentation](http://nodejs.org/download/).
+If you haven't installed **Node.js** yet, please refer to [the official documentation](http://nodejs.org/download/).
 
-You haven't installed **Redis** yet, please refer to [the official documentation](http://redis.io/download).
+If you haven't installed **Redis** yet, please refer to [the official documentation](http://redis.io/download).
 Once Redis is installed, execute the command `redis-cli` in the command line.
-
-![Preview of system](https://cloud.githubusercontent.com/assets/1534519/3942864/f9df9f9c-257a-11e4-9229-e995e10e77f8.png)
 
 ### Installation
 
