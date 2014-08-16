@@ -10,10 +10,10 @@
     "discussion",
     "anonymous"
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "repository": "http-teapot/comment",
-  "private": true,
+  "private": false,
   "dependencies": {
     "body-parser": "1.x",
     "compression": "1.x",
