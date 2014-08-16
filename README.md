@@ -36,7 +36,7 @@ Once it's all complete, run:
 npm start
 ```
 
-If you decided to run your app on port 80, you will the command above as root.
+If you want to run your app on port 80, you need to execute the command above as root.
 
 ```
 sudo npm start
