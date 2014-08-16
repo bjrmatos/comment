@@ -3,14 +3,18 @@ Anonymous comment system using Socket.io, Node.js and React.js
 
 This comment system supports threaded discussions, likes and a simplified login system that uses Twitter API.
 
-It only stores a user id and the avatar's path in a **Redis data store** which allows a user to be anonymous. The user is in control of how anonymous he can.
+It only stores a user id and the avatar's path in a **Redis data store** which allows a user to be anonymous (provided that the user does not share any personal information on his Twitter account).
+
+By default, the app does not record your IP address.
 
 ### Requirements
 
 You haven't installed **Node.js** yet, please refer to [the official documentation](http://nodejs.org/download/).
 
 You haven't installed **Redis** yet, please refer to [the official documentation](http://redis.io/download).
-Once Redis is installed, in the command line, run `redis-cli`.
+Once Redis is installed, execute the command `redis-cli` in the command line.
+
+![Preview of system](https://cloud.githubusercontent.com/assets/1534519/3942864/f9df9f9c-257a-11e4-9229-e995e10e77f8.png)
 
 ### Installation
 
@@ -22,9 +26,9 @@ git clone https://github.com/http-teapot/comment
 
 Duplicate `config.dist.js`, name the new file `config.js` and fill out the settings as much as you can.
 
-If you didn't set a new app on Twitter (so users can log in), head to the [Twitter's app website](https://apps.twitter.com/), create a new app and check the `API Keys` tab to get the different keys.
-
 Most settings will work fine as-is just make sure you specify a domain (can be localhost or 127.0.0.1).
+
+If you didn't set a new app on Twitter (so users can log in), head to the [Twitter's app website](https://apps.twitter.com/), create a new app and check the `API Keys` tab to get the different keys.
 
 Once it's all complete, run:
 
