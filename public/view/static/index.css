@@ -1,0 +1,41 @@
+.Page.Page--static {
+  text-align: center;
+}
+
+.Page.Page--static .Page-title,
+.Page.Page--static .Page-subtitle {
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+
+.Page.Page--static .Page-title {
+  margin-top: 20px;
+  border: 0;
+}
+
+.Page.Page--static .Page-subtitle {
+  color: #292929;
+  font-size: 26px;
+}
+
+.Page.Page--static .Page-showDemo {
+  font-weight: 400;
+  margin: 24px 0 10px;
+}
+
+.Page.Page--static .Page-showComments {
+  border: 1px solid #545454;
+  border-radius: 30px;
+  color: #545454;
+  display: inline-block;
+  margin: 10px 0;
+  padding: 16px 26px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.Page.Page--static .Page-showComments:hover {
+  color: #e56e6d;
+  border-color: #e56e6d;
+}

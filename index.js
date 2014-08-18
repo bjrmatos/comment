@@ -10,6 +10,7 @@ var to = function (controller, action) {
 
 // List of routes
 router.addRoute('/', to('static', 'index'));
+router.addRoute('/grep/', to('grep', 'index'));
+router.addRoute('/example/', to('example', 'index'));
 router.addRoute('/login/', to('security', 'login'));
 router.addRoute('/authorize/', to('security', 'authorize'));
-router.addRoute('/test/', to('test', 'hello'));

@@ -1,0 +1,26 @@
+.Article.Article--example {
+
+}
+
+.Article.Article--example .Article-comments {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.Article.Article--example .Article-comments a {
+  border: 1px solid #434343;
+  border-radius: 30px;
+  color: #434343;
+  display: inline-block;
+  padding: 16px 26px;
+  text-decoration: none;
+  transition: border 0.2s;
+}
+
+.Article.Article--example .Article-comments a:hover {
+  border-color: #e56e6d;
+}
+
+.Article.Article--example .Article-comments a span {
+  color: #e56e6d;
+}

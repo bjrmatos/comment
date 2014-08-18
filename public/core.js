@@ -2,7 +2,6 @@
 
 (function (socket_path, thread_id) {
   var socket = io(socket_path)
-    , thread_id = 6
     , commentLists = []
     , commentBox;
 
@@ -58,7 +57,7 @@
           submitCallback: submitCallback,
           initialCommentLists: list
         }),
-        document.getElementById('CommentListContainer')
+        document.getElementById('Container')
       );
     };
 

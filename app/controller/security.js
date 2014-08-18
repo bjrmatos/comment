@@ -1,7 +1,8 @@
 /**
  * Security controller
  */
-var passport = require('../../lib/passport');
+var passport = require('../../lib/passport')
+  , config = require('../../config');
 
 var Security = {
   /**
@@ -27,7 +28,9 @@ var Security = {
       res.redirect('/login/');
     };
 
-    passport.authenticate('twitter', {failureRedirect: '/login/', successRedirect: '/'})(req, res, next);
+    passport.authenticate('twitter', {
+      failureRedirect: config.oauth.twitter.failureURL, successRedirect: config.oauth.twitter.successURL
+    })(req, res, next);
   }
 }
 
