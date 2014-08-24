@@ -5,6 +5,19 @@
     , commentLists = []
     , commentBox;
 
+  if (top && window.closeEvent) {
+    document.body.addEventListener('click', function (event) {
+      if (
+        event.toElement.className.indexOf('Layout') === -1 &&
+        event.toElement.className.indexOf('CommentBox') === -1 &&
+        event.toElement.className.indexOf('CommentList') === -1
+      ) {
+        return;
+      }
+      window.closeEvent();
+    }, false);
+  }
+
   socket.emit('comment/list', {thread_id: thread_id});
 
   socket.on('user', function (user) {

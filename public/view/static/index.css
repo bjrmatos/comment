@@ -19,8 +19,16 @@
   font-size: 26px;
 }
 
+.Page.Page--static .Page-features-feature {
+
+}
+
+.Page.Page--static .Page-features-feature .fa {
+  font-size: 48px;
+}
+
 .Page.Page--static .Page-showDemo {
-  font-weight: 400;
+  font-weight: 300;
   margin: 24px 0 10px;
 }
 

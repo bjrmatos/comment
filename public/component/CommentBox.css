@@ -4,8 +4,8 @@
 
 .CommentBox .CommentList {
   display: inline-block;
-  margin-left: 60px;
-  margin-right: 10px;
+  margin-left: 50px;
+  margin-right: 20px;
   max-width: 320px;
   position: relative;
   vertical-align: top;
